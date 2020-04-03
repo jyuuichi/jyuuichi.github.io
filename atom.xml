@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jyuuichi.github.io</id>
-    <title>jyuuichi blog</title>
-    <updated>2020-04-03T08:02:13.764Z</updated>
+    <title>jyuuichi</title>
+    <updated>2020-04-03T08:14:21.540Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jyuuichi.github.io"/>
     <link rel="self" href="https://jyuuichi.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>jyuuichi&apos;s blog</subtitle>
     <logo>https://jyuuichi.github.io/images/avatar.png</logo>
     <icon>https://jyuuichi.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, jyuuichi blog</rights>
+    <rights>All rights reserved 2020, jyuuichi</rights>
     <entry>
         <title type="html"><![CDATA[测试文章]]></title>
         <id>https://jyuuichi.github.io/post/ce-shi-wen-zhang/</id>
