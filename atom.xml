@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jyuuichi.github.io</id>
     <title>jyuuichi</title>
-    <updated>2020-04-03T14:03:08.204Z</updated>
+    <updated>2020-04-03T14:12:51.486Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jyuuichi.github.io"/>
     <link rel="self" href="https://jyuuichi.github.io/atom.xml"/>
@@ -10,4 +10,14 @@
     <logo>https://jyuuichi.github.io/images/avatar.png</logo>
     <icon>https://jyuuichi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, jyuuichi</rights>
+    <entry>
+        <title type="html"><![CDATA[网易云音乐外链播放]]></title>
+        <id>https://jyuuichi.github.io/post/wang-yi-yun-yin-le-wai-lian-bo-fang/</id>
+        <link href="https://jyuuichi.github.io/post/wang-yi-yun-yin-le-wai-lian-bo-fang/">
+        </link>
+        <updated>2020-04-03T14:10:23.000Z</updated>
+        <content type="html"><![CDATA[<p>http://music.163.com/song/media/outer/url?id=874229.mp3<br>
+把 <code>id=874229</code> 部分替换成网易云在线播放网页的 <code>id</code></p>
+]]></content>
+    </entry>
 </feed>
