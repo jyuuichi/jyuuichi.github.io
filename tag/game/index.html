@@ -4,11 +4,11 @@
       <meta charset="UTF-8"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="keywords" content="jyuuichi blog">
-<meta name="description" content="jyuuichi&#39;s blog">
+<meta name="keywords" content="jyuuichi static blog">
+<meta name="description" content="simple and pure">
 <meta name="theme-color" content="#000">
 <title>jyuuichi</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1585916417146">
+<link rel="shortcut icon" href="/favicon.ico?v=1585931599156">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -134,7 +134,7 @@
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="https://jyuuichi.github.io/images/avatar.png"/>
     <p class="site-author-name">jyuuichi</p>
-    <p class="site-description right-motion">jyuuichi&#39;s blog</p>
+    <p class="site-description right-motion">simple and pure</p>
   </div>
   <div class="sidebar-item side-item-stat right-motion">
     <div class="sidebar-item-box">
@@ -159,34 +159,10 @@
   </div>
   
     
-      <div class="sidebar-item">
-        <span class="site-item-rss">
-            <i class="fa fa-rss"></i>
-            <a href="https://jyuuichi.github.io/atom.xml" target="_blank">RSS</a>
-        </span>
+      <div class="sidebar-item" style="border-top: 1px dotted #ccc; margin-top: 10px;">
       </div>
     
   
-  
-    <div class="sidebar-item sidebar-item-social">
-      <div class="social-item">
-        
-          
-            <a href="">
-              <i class="fa fa-globe"></i> 
-            </a>
-          
-        
-        
-          
-            <a class="social-img" href="#">
-              <img src="" />
-              <i class="fa fa-globe"></i> 
-            </a>
-          
-        
-      </div>
-    </div>
   
 
 
@@ -222,21 +198,23 @@
       
         
           
-        
-          
-            <a href="https://jyuuichi.github.io/post/ce-shi-wen-zhang-2/">
+            <a href="https://jyuuichi.github.io/post/ji-huang-lian-ji-steam-ping-tai-centos7x-zi-jian-fu-pei-zhi-ji-lu/">
               <div class="motion-warpper">
                 <div class="tag-post-node">
                   <h1>
                     04-03
-                    <small>测试文章2</small>
+                    <small>饥荒联机 steam 平台 Centos7.x 自建服配置记录</small>
                   </h1>
                 </div>  
               </div>
             </a>
           
         
+          
+        
       
+        
+          
         
       
     </div>
@@ -268,6 +246,52 @@
     
   </div>
   
+    <div class="bg-img">
+      <img src="\media\images\custom-bgImg.png" />
+    </div>
+  
+  
+    <link rel="stylesheet" href="/media/live2d/histoire/css/live2d.css" />
+<div class="box-scale">
+  <div id="landlord" style="left:5px;bottom:0px;" data-key="">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
+    <div class="live_talk_input_body">
+      <div class="live_talk_input_name_body">
+        <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
+      </div>
+      <div class="live_talk_input_text_body">
+        <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
+        <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
+      </div>
+    </div>
+    <input name="live_talk" id="live_talk" value="1" type="hidden" />
+    <div class="live_ico_box">
+      <div class="live_ico_item type_info" id="showInfoBtn"></div>
+      <div class="live_ico_item type_talk" id="showTalkBtn"></div>
+      
+      <div class="live_ico_item type_music" id="musicButton"></div>
+      
+      <div class="live_ico_item type_youdu" id="youduButton"></div>
+      <div class="live_ico_item type_quit" id="hideButton"></div>
+      <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
+      <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
+      <input id="duType" value="douqilai" type="hidden">
+      
+        <input name="live2dBGM" value="http://music.163.com/song/media/outer/url?id=874229.mp3" type="hidden">
+      
+    </div>
+  </div>
+</div>
+<div id="open_live2d">召唤伊斯特瓦尔</div>
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+var message_Path = '/media/live2d/histoire/';
+let landlord = document.querySelector('#landlord');
+var apiKey = landlord.dataset.key;
+</script>
+<script type="text/javascript" src="/media/live2d/histoire/js/live2d.js"></script>
+<script type="text/javascript" src="/media/live2d/histoire/js/message.js"></script>
   
   
 </div>

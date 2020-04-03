@@ -7,7 +7,7 @@
 <meta name="keywords" content="jyuuichi static blog">
 <meta name="description" content="simple and pure">
 <meta name="theme-color" content="#000">
-<title>网易云音乐外链播放 | jyuuichi</title>
+<title>饥荒联机 steam 平台 Centos7.x 自建服配置记录 | jyuuichi</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1585931599156">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -25,8 +25,8 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
     onload="renderMathInElement(document.body);"></script>
 
-    <meta name="description" content="网易云音乐外链播放" />
-    <meta name="keywords" content="教程" />
+    <meta name="description" content="饥荒联机 steam 平台 Centos7.x 自建服配置记录" />
+    <meta name="keywords" content="游戏,教程" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -146,7 +146,8 @@
       <div class="sidebar-body gemini" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="https://jyuuichi.github.io/images/avatar.png"/>
@@ -184,6 +185,190 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto" id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E6%8F%90%E5%87%86%E5%A4%87">前提准备</a></li>
+<li><a href="#%E5%8D%8A%E6%87%92%E4%BA%BA%E5%8C%96%E5%88%9D%E5%88%9B%E4%B8%96%E7%95%8C%E5%AD%98%E6%A1%A3%E9%85%8D%E7%BD%AE%E5%90%AB-mod-%E9%85%8D%E7%BD%AE">半懒人化初创世界存档配置，含 mod 配置</a></li>
+<li><a href="#mod-%E4%B8%8B%E8%BD%BD%E7%9B%B8%E5%85%B3">mod 下载相关</a></li>
+<li><a href="#mod-%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3">mod 配置相关</a></li>
+<li><a href="#%E7%AE%A1%E7%90%86%E5%91%98">管理员</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9B%B4%E6%96%B0">服务器更新</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1; 
+let active = 'active-show', activeClass = 'active-current';
+let tocWrapper = document.querySelector('#toc_wrapper');
+let tocContent = tocWrapper.children[0];
+let autoNumber = tocWrapper&&tocWrapper.classList.contains('auto-number');
+
+function addTocNumber(elem, deep) {
+  if (!elem) {
+    return;
+  }
+  let prop = elem.__proto__;
+
+  if (prop === HTMLUListElement.prototype) {
+    for (let i = 0; i < elem.children.length; i++) {
+      addTocNumber(elem.children[i], deep + (i + 1) + '.');
+    }
+  } else if (prop === HTMLLIElement.prototype) {
+    // 保存li元素
+    lList.push(elem);
+    for (let i = 0; i < elem.children.length; i++) {
+      let cur = elem.children[i];
+      if (cur.__proto__ === HTMLAnchorElement.prototype) {
+        if (autoNumber) {
+          cur.text =  deep + ' ' + cur.text;
+        }
+      } else if (cur.__proto__ === HTMLUListElement.prototype) {
+        addTocNumber(cur, deep);
+      }
+    }
+  }
+}
+
+
+document.addEventListener('scroll', function(e) {
+  if (lList.length <= 0) {
+    return;
+  }
+  let scrollTop = document.scrollingElement.scrollTop + 10;
+  let dir;
+
+  if (lastTop - scrollTop > 0) {
+    dir = 'up';
+  } else {
+    dir = 'down';
+  }
+
+  lastTop = scrollTop;
+  if (scrollTop <= 0) {
+    if (lastIndex >= 0 && lastIndex < hList.length) {
+      lList[lastIndex].classList.remove(activeClass);
+    }
+    return;
+  }
+
+  let current = 0, hasFind = false;
+  for (let i = 0; i < hList.length; i++) {
+    if (hList[i].offsetTop > scrollTop) {
+      current = i;
+      hasFind = true;
+      break;
+    }
+  }
+  if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+    current = hList.length - 1;
+  } else {
+    current--;
+  }
+  if (dir === 'down') {
+    if (current > lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex) 
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  } else {
+    if (current < lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex);
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  }
+});
+
+function removeParentActiveClass() {
+  let parents = tocContent.querySelectorAll('.'+active)
+  parents.forEach(function(elem) {
+    elem.classList.remove(active);
+  });
+}
+
+function addActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.add(activeClass);
+  }
+}
+
+function removeActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.remove(activeClass);
+  }
+}
+
+function addActiveLiElemment(elem, parent) {
+  if (!elem || elem === parent) {
+    return;
+  } else {
+    if (elem.__proto__ === HTMLLIElement.prototype) {
+      elem.classList.add(active);
+    }
+    addActiveLiElemment(elem.parentElement, parent);
+  }
+}
+
+function showToc() {
+  if (tocWrapper) {
+    postBody = document.querySelector('#post_body');
+    for (let i = 0; i < postBody.children.length; i++) {
+      if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+        hList.push(postBody.children[i]);
+      }
+    }
+    if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+    } else if (tocWrapper.classList.contains('no_compress')){
+      tocContent.classList.add('expanded');
+    } else {
+      if (hList.length > 10) {
+        active = 'active-hidden'
+        tocContent.classList.add('closed');
+      } else {
+        tocContent.classList.add('expanded');
+      }
+    }
+  }
+}
+addTocNumber(tocContent, '');
+
+window.addEventListener('load', function() {
+  showToc();
+  document.querySelector('#sidebar').style='display: block;';
+  tocWrapper.classList.add('toc-active');
+  setTimeout(function() {
+    if ("createEvent" in document) {
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("scroll", false, true);
+      document.dispatchEvent(evt);
+    }
+    else {
+      document.fireEvent("scroll");
+    }
+  }, 500)
+})
+
+</script>
+            </div>
           
         
       </div>
@@ -271,8 +456,8 @@
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://jyuuichi.github.io/post/wang-yi-yun-yin-le-wai-lian-bo-fang/">
-      网易云音乐外链播放
+    <a class="post-title-link" href="https://jyuuichi.github.io/post/ji-huang-lian-ji-steam-ping-tai-centos7x-zi-jian-fu-pei-zhi-ji-lu/">
+      饥荒联机 steam 平台 Centos7.x 自建服配置记录
     </a>
   </h1>
   <div class="post-meta">
@@ -289,6 +474,12 @@
         <span class="pc-show">分类于</span>
         
           
+            <a href="https://jyuuichi.github.io/tag/game/">
+              <span>游戏</span>
+            </a>、
+          
+        
+          
             <a href="https://jyuuichi.github.io/tag/tech/">
               <span>教程</span>
             </a>
@@ -299,19 +490,123 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>6分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>30<span class="pc-show">字数</span></span>
+      <span>1271<span class="pc-show">字数</span></span>
     </span>
     
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <p>http://music.163.com/song/media/outer/url?id=874229.mp3<br>
-把 <code>id=874229</code> 部分替换成网易云在线播放网页的 <code>id</code></p>
+                <h3 id="前提准备">前提准备</h3>
+<ol>
+<li>安装相应库<pre><code class="language-shell">yum install glibc.i686 libstdc++.i686 libcurl.i686
+ln -s /usr/lib/libcurl.so.4 /usr/lib/libcurl-gnutls.so.4 # 因为缺少 libcurl-gnutls.so.4 库，需要用软链接替代
+</code></pre>
+</li>
+<li>创建 <code>steam</code> 这个新用户<pre><code class="language-shell">useradd steam # 创建用户
+passwd steam # 设置密码
+</code></pre>
+</li>
+<li>创建 <code>steamcmd</code> 目录，并下载 <code>steamcmd</code><pre><code class="language-shell">cd ~
+mkdir steamcmd # 创建目录
+cd steamcmd # 进入 steamcmd 目录
+wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz # 下载 steamcmd
+tar -xvzf steamcmd_linux.tar.gz # 解压到当前目录
+</code></pre>
+</li>
+<li>运行 <code>steamcmd</code>，下载饥荒服务器。<pre><code class="language-shell">./steamcmd.sh
+# Steam&gt; 是运行脚本后的命令提示符，后面是要输入的命令
+Steam&gt;login anonymous # 匿名登录
+Steam&gt;force_install_dir /home/steam/steamapps/DST # 设置游戏下载目录
+Steam&gt;app_update 343050 validate # 下载Don't Starve Together Dedicated Servers
+Steam&gt;quit # 退出
+</code></pre>
+</li>
+<li>进入运行饥荒服务器目录文件夹，首次运行饥荒服务器，得到默认配置。第一次运行会报错 <code>Your Server Will Not Start</code>，问题不大。<pre><code class="language-shell">cd ~/steam/steamapps/DST/bin
+./dontstarve_dedicated_server_nullrenderer
+</code></pre>
+</li>
+<li>获取自己的服务器 token。上 steam 登录游戏后，点击左下角账户，进入klei官网，然后点击上方的 games(游戏)，右边就能找到 <code>Don't Starve Together Game Servers</code>，点进去会让你添加一个 server，按照个人喜好命名 Cluster 后点击 ADD NEW SERVER，然后 SERVERS 列表就有刚才创建的 token (一串字符串)，复制下来保存。</li>
+</ol>
+<h3 id="半懒人化初创世界存档配置含-mod-配置">半懒人化初创世界存档配置，含 mod 配置</h3>
+<ol>
+<li>自己进入游戏，把资源和 mod 设置好，创建世界，进入到选人界面时候退回游戏主菜单。在左下角有个 <code>数据</code>，点击后就会到存档文件夹父级目录， <code>Cluster_数字</code> 这些文件夹就是存档，数字对应在游戏里创建的存档位置。拷贝一份刚才创建的存档文件夹，然后进去修改 <code>cluster_token.txt</code> 的内容为获取的服务器 token。将拷贝的存档文件夹传送到服务器。<pre><code class="language-shell">scp -r C:\Users\nil\Documents\Klei\DoNotStarveTogether\233333\Cluster_1(替换为自己拷贝的存档的路径) steam@服务器ip:/home/steam
+</code></pre>
+</li>
+<li>重命名存档文件夹并拷贝到 <code>~/.klei/DoNotStarveTogether</code> 目录下。<pre><code class="language-shell">mv Cluster_* MyDSTServer
+cp -r ./MyDSTServer ~/.klei/DoNotStarveTogether
+</code></pre>
+</li>
+<li>下载 mod。两种方式。
+<ol>
+<li>简单粗暴的把 windows 下载好的 mod 拷过去。具体可看 <a href="#mod-%E4%B8%8B%E8%BD%BD%E7%9B%B8%E5%85%B3">mod下载相关</a>。</li>
+<li>编辑 <code>~/steam/steamapps/DST/mods/dedicated_server_mods_setup.lua</code>。添加代码：（会在服务器运行时自动下载，并且 mod 有更新会自动更新）<pre><code class="language-shell">ServerModSetup(&quot;创意工坊订阅id&quot;) # 每个 mod 一行，id 可在创意工坊里找到该 mod，上方 url 中 id?= 后面的一串数字
+</code></pre>
+</li>
+</ol>
+</li>
+<li>回到运行饥荒服务器程序目录，新建脚本 <code>dst_start.sh</code>，并运行。<pre><code class="language-shell">cd ~/steam/steamapps/DST/bin
+vim dst_start.sh
+</code></pre>
+<pre><code class="language-shell">#!/bin/bash
+nohup ./dontstarve_dedicated_server_nullrenderer -cluster MyDSTServer -console -shard Master &gt; $HOME/MyDSTServer_master.out 2&gt;&amp;1 &amp;
+nohup ./dontstarve_dedicated_server_nullrenderer -cluster MyDSTServer -console -shard Caves &gt; $HOME/MyDSTServer_caves.out 2&gt;&amp;1 &amp;
+</code></pre>
+<pre><code class="language-shell">chmod +x dst_start.sh 
+./dst_start.sh
+</code></pre>
+</li>
+<li>查看日志，检查服务器运行状况。如果出现了 <code>Sim pause</code>，表示运行成功。服务器完全跑起来需要一段时间，需要不断查看。<pre><code class="language-shell">tail ~/MyDSTServer_master.out -n 20 # 查看地表日志
+tail ~/MyDSTServer_cave.out -n 20 # 查看洞穴日志
+</code></pre>
+</li>
+<li>打开 udp 10999(地表) 10998(洞穴) 端口，客户端通过控制台（进入游戏，英文输入法下上方数字键盘 1 左边的 ~ 键，不是打出 ~，不用按 shift 组合） <code>c_connect(&quot;ip&quot;, 10999)</code> 命令直连服务器。<pre><code class="language-shell">firewall-cmd --permanent --add-port=10998-10999/udp
+firewall-cmd --reload
+</code></pre>
+</li>
+<li>服务器停止、重启脚本。<pre><code class="language-shell">#!/bin/bash
+# dst_stop.sh 服务器停止脚本
+killall dontstarve_dedicated_server_nullrenderer
+
+#!/bin/bash
+# dst_restart.sh 服务器重启脚本
+./dst_stop.sh
+sleep 3
+./dst_start.sh
+</code></pre>
+</li>
+</ol>
+<h3 id="mod-下载相关">mod 下载相关</h3>
+<ol>
+<li>服务器 mod 文件目录 <code>~/steam/steamapps/DST/mods</code></li>
+<li>mod 文件名格式 <code>workshop-xxx(数字id对应创意工坊)</code></li>
+<li>win10 打开 steam，右键 Don't Starve Together，点击属性，选择本地文件，点击浏览本地文件，有个 mods 文件夹，这里就存放着下载好的 mod</li>
+<li>从 win10 拷贝下好的服务器 mod 到服务器就是运用前3点的知识。选择相应的 mod 用 scp 命令拷贝过去到饥荒服务器的 mod 文件夹就好。</li>
+</ol>
+<h3 id="mod-配置相关">mod 配置相关</h3>
+<ol>
+<li>mod 配置文件名为 <code>modoverrides.lua</code>，在 <code>存档/Master</code> 和 <code>存档/Caves</code>目录下各一份。分别代表地上和洞穴的配置。</li>
+<li>新增 mod 建议在 windows 开个单独有新增 mod，没有其他 mod 的档。然后编辑 mod 配置文件。</li>
+<li>一份完整的配置文件示例<pre><code class="language-shell">return {
+    [&quot;workshop-1207269058&quot;]={ configuration_options={  }, enabled=true },
+    [&quot;workshop-1924707395&quot;]={ configuration_options={ GLZ=&quot;false&quot; }, enabled=true }
+}
+</code></pre>
+</li>
+<li>可以知道每个 mod 的配置形式都是 <code>[&quot;workshop-id&quot;]={...}</code>，且用 &quot;,&quot;分割所以新增 mod 就把单独开的档的配置文件拷贝这样的配置形式代码过去就行。</li>
+</ol>
+<h3 id="管理员">管理员</h3>
+<ol>
+<li>房主本身就是管理员。</li>
+<li>添加其他游戏成员为管理员需要在 <code>~/.klei/DoNotStarveTogether/MyDSTServer</code> 下新建 <code>adminlist.txt</code>，然后把其他游戏成员的科雷 UID 写进去，一行一个。</li>
+<li>管理员常用命令 <code>c_rollback()</code>。回档大法好。</li>
+</ol>
+<h3 id="服务器更新">服务器更新</h3>
+<p>参照 <a href="#%E5%89%8D%E6%8F%90%E5%87%86%E5%A4%87">前提准备</a> 第4点</p>
 
               </div>
               <div class="post-footer">
@@ -322,7 +617,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://jyuuichi.github.io/post/wang-yi-yun-yin-le-wai-lian-bo-fang/" title="网易云音乐外链播放">网易云音乐外链播放</a>
+      <a href="https://jyuuichi.github.io/post/ji-huang-lian-ji-steam-ping-tai-centos7x-zi-jian-fu-pei-zhi-ji-lu/" title="饥荒联机 steam 平台 Centos7.x 自建服配置记录">饥荒联机 steam 平台 Centos7.x 自建服配置记录</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -331,18 +626,20 @@
   </ul>
   <div class="tags">
     
+      <a href="https://jyuuichi.github.io/tag/game/"># 游戏</a>
+    
       <a href="https://jyuuichi.github.io/tag/tech/"># 教程</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="饥荒联机 steam 平台 Centos7.x 自建服配置记录" href="https://jyuuichi.github.io/post/ji-huang-lian-ji-steam-ping-tai-centos7x-zi-jian-fu-pei-zhi-ji-lu/">饥荒联机 steam 平台 Centos7.x 自建服配置记录</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="饥荒联机 steam 平台 Centos7.x 自建服配置记录" href="https://jyuuichi.github.io/post/ji-huang-lian-ji-steam-ping-tai-centos7x-zi-jian-fu-pei-zhi-ji-lu/">上一篇</a>
-      
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="网易云音乐外链播放" href="https://jyuuichi.github.io/post/wang-yi-yun-yin-le-wai-lian-bo-fang/">网易云音乐外链播放</a>
+        <a class="nav-mobile-next" title="网易云音乐外链播放" href="https://jyuuichi.github.io/post/wang-yi-yun-yin-le-wai-lian-bo-fang/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>
