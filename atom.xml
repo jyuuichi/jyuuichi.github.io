@@ -2,34 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://jyuuichi.github.io</id>
     <title>jyuuichi</title>
-    <updated>2020-04-03T12:20:23.880Z</updated>
+    <updated>2020-04-03T14:03:08.204Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://jyuuichi.github.io"/>
     <link rel="self" href="https://jyuuichi.github.io/atom.xml"/>
-    <subtitle>jyuuichi&apos;s blog</subtitle>
+    <subtitle>simple and pure</subtitle>
     <logo>https://jyuuichi.github.io/images/avatar.png</logo>
     <icon>https://jyuuichi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, jyuuichi</rights>
-    <entry>
-        <title type="html"><![CDATA[测试文章2]]></title>
-        <id>https://jyuuichi.github.io/post/ce-shi-wen-zhang-2/</id>
-        <link href="https://jyuuichi.github.io/post/ce-shi-wen-zhang-2/">
-        </link>
-        <updated>2020-04-03T12:18:07.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="yyy">yyy</h1>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[测试文章]]></title>
-        <id>https://jyuuichi.github.io/post/ce-shi-wen-zhang/</id>
-        <link href="https://jyuuichi.github.io/post/ce-shi-wen-zhang/">
-        </link>
-        <updated>2020-04-03T06:58:26.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="markdown-测试">markdown 测试</h1>
-<h2 id="二级标题">二级标题</h2>
-<ol>
-<li><code>func</code> 代码</li>
-</ol>
-]]></content>
-    </entry>
 </feed>
