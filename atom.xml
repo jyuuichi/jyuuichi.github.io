@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://jyuuichi.github.io</id>
+    <title>jyuuichi blog</title>
+    <updated>2020-04-03T07:21:27.131Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://jyuuichi.github.io"/>
+    <link rel="self" href="https://jyuuichi.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://jyuuichi.github.io/images/avatar.png</logo>
+    <icon>https://jyuuichi.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, jyuuichi blog</rights>
+    <entry>
+        <title type="html"><![CDATA[测试文章]]></title>
+        <id>https://jyuuichi.github.io/post/ce-shi-wen-zhang/</id>
+        <link href="https://jyuuichi.github.io/post/ce-shi-wen-zhang/">
+        </link>
+        <updated>2020-04-03T06:58:26.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="markdown-测试">markdown 测试</h1>
+<h2 id="二级标题">二级标题</h2>
+<ol>
+<li><code>func</code> 代码</li>
+</ol>
+]]></content>
+    </entry>
+</feed>
