@@ -8,7 +8,7 @@
 <meta name="description" content="simple and pure">
 <meta name="theme-color" content="#000">
 <title>饥荒联机 steam 平台 Centos7.x 自建服配置记录 | jyuuichi</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1585968033710">
+<link rel="shortcut icon" href="/favicon.ico?v=1586001155277">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -495,7 +495,7 @@ window.addEventListener('load', function() {
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1271<span class="pc-show">字数</span></span>
+      <span>1285<span class="pc-show">字数</span></span>
     </span>
     
   </div>
@@ -507,8 +507,9 @@ window.addEventListener('load', function() {
 ln -s /usr/lib/libcurl.so.4 /usr/lib/libcurl-gnutls.so.4 # 因为缺少 libcurl-gnutls.so.4 库，需要用软链接替代
 </code></pre>
 </li>
-<li>创建 <code>steam</code> 这个新用户<pre><code class="language-shell">useradd steam # 创建用户
+<li>创建 <code>steam</code> 这个新用户，然后切换到 <code>steam</code> 用户<pre><code class="language-shell">useradd steam # 创建用户
 passwd steam # 设置密码
+su steam # 切换用户
 </code></pre>
 </li>
 <li>创建 <code>steamcmd</code> 目录，并下载 <code>steamcmd</code><pre><code class="language-shell">cd ~
